@@ -54,22 +54,20 @@ app.get("/tables", function (req, res) {
 });
 
 // Displays a single character, or returns false
-// app.get("/tables", function (req, res) {
-//     var tables = req.params.character;
+app.get("/api/tables", function (req, res) {
+    var tables = req.params.character;
 
-//     console.log(chosen);
+    console.log(chosen);
 
-//     for (var i = 0; i <= 5; i++) {
-//         if (chosen === reservations[i].routeName) {
-//             return res.json.reservations[i];
-//         }
-//     }
+    for (var i = 0; i <= reservations.length; i++) {
 
-//     return res.json(false);
-// });
+    }
+
+    return res.json(false);
+});
 
 // Create New reservations - takes in JSON input
-app.post("/reservations", function (req, res) {
+app.post("/api/reservations", function (req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
     var newReservation = req.body;
@@ -78,20 +76,15 @@ app.post("/reservations", function (req, res) {
     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
     newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
-    console.log(newReservation);
-    function whichList() {
-        if (reservations.length < 5) {
+    if (reservations.length < 5) {
 
-            reservations.push(newReservation);
-            res.json(newReservation);
-        }
-        else {
-            waitList.push(newReservation);
-            res.json(waitList);
-        }
+        reservations.push(newReservation);
+        res.json(newReservation);
     }
-
-    whichList();
+    else {
+        waitList.push(newReservation);
+        res.json(waitList);
+    }
 });
 
 
