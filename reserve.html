@@ -93,17 +93,17 @@
       // Question: What does this code do?
       $("#add-btn").on("click", function (event) {
         event.preventDefault();
-        var newCharacter = {
-          name: $("#name").val().trim(),
-          role: $("#role").val().trim(),
-          age: $("#age").val().trim(),
-          forcePoints: $("#force-points").val().trim(),
+        var newReservation = {
+          tableName: $("#name").val().trim(),
+          phoneNumber: $("#phone").val().trim(),
+          email: $("#email").val().trim(),
+          uniqueID: $("#uniqueID").val().trim(),
         };
 
         // Question: What does this code do??
         $.post("/characters", newCharacter).then(function (data) {
-          console.log("add.html", data);
-          return "Adding character...";
+          console.log("tables.html", data);
+          return "Adding reservation...";
         });
       });
     </script>
