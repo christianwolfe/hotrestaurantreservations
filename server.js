@@ -6,7 +6,9 @@ var path = require("path");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = 3000;
+
+//port for heroku
+let PORT = process.env.PORT || 3000
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -48,11 +50,11 @@ app.get("/tables", function (req, res) {
 
 // Displays a single character, or returns false
 app.get("/tables", function (req, res) {
-    var chosen = req.params.character;
+    var tables = req.params.character;
 
     console.log(chosen);
 
-    for (var i = 0; i < reservations.length; i++) {
+    for (var i = 0; i <= 5; i++) {
         if (chosen === reservations[i].routeName) {
             return res.json.reservations[i];
         }
@@ -72,11 +74,19 @@ app.post("/reservations", function (req, res) {
     newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(newReservation);
+    function whichList() {
+        if (reservations.length < 5) {
 
-    reservations.push(newReservation);
-
+            reservations.push(newReservation);
+        }
+        else {
+            waitList.push(newReservation);
+        }
+    }
     res.json(newReservation);
+    whichList() 
 });
+
 
 // Starts the server to begin listening
 // =============================================================
