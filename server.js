@@ -14,19 +14,17 @@ let PORT = process.env.PORT || 3000
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// reservations (DATA)
+// Restaurant reservations (DATA)
 // =============================================================
 var reservations = [
     {
-        routeName: "Smith",
-        name: "John Smith",
-        role: "Jedi Master",
-        age: 900,
-        forcePoints: 2000
+        tableName: "Smith",
+        phoneNumber: "312-403-4055",
+        email: "smith@mail.com",
+        uniqueID: 9
     },
 
 ];
-
 var waitList = [];
 
 // Routes
@@ -39,6 +37,10 @@ app.get("/", function (req, res) {
 
 app.get("/reserve", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+app.get("/tables", function(req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 // Displays all reservations
@@ -80,10 +82,11 @@ app.post("/reservations", function (req, res) {
         else {
             waitList.push(newReservation);
         }
-
-        res.json(newReservation);
     }
+    res.json(newReservation);
+    whichList() 
 });
+
 
 // Starts the server to begin listening
 // =============================================================
