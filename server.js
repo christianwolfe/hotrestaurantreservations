@@ -39,29 +39,30 @@ app.get("/reserve", function (req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/tables", function(req, res) {
+app.get("/tables", function (req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 // Displays all reservations
 app.get("/tables", function (req, res) {
     return res.json.reservations[i];
+    return res.json.waitList[i];
 });
 
 // Displays a single character, or returns false
-app.get("/tables", function (req, res) {
-    var tables = req.params.character;
+// app.get("/tables", function (req, res) {
+//     var tables = req.params.character;
 
-    console.log(chosen);
+//     console.log(chosen);
 
-    for (var i = 0; i <= 5; i++) {
-        if (chosen === reservations[i].routeName) {
-            return res.json.reservations[i];
-        }
-    }
+//     for (var i = 0; i <= 5; i++) {
+//         if (chosen === reservations[i].routeName) {
+//             return res.json.reservations[i];
+//         }
+//     }
 
-    return res.json(false);
-});
+//     return res.json(false);
+// });
 
 // Create New reservations - takes in JSON input
 app.post("/reservations", function (req, res) {
@@ -78,13 +79,15 @@ app.post("/reservations", function (req, res) {
         if (reservations.length < 5) {
 
             reservations.push(newReservation);
+            res.json(newReservation);
         }
         else {
             waitList.push(newReservation);
+            res.json(waitList);
         }
     }
-    res.json(newReservation);
-    whichList() 
+
+    whichList();
 });
 
 
