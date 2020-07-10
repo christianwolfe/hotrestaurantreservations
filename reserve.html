@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Make a Reservation</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1 class="text-center">
-          <i class="fa fa-fire" aria-hidden="true"></i>Hot Restaurant
-        </h1>
-        <hr />
-        <h3 class="text-center">
-          Make your reservation
-        </h3>
-        <row class="d-flex justify-content-center">
-          <a href="/tables"
-            ><button class="btn btn-info btn-lg m-1">
-              <span class="fa fa-eye"></span> View Tables
-            </button></a
-          >
-          <a href="/"
-            ><button class="btn btn-light btn-lg m-1">
-              <span class="fa fa-home"></span></button
-          ></a>
-        </row>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Make a Reservation</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="text-center">
+        <i class="fa fa-fire" aria-hidden="true"></i>Hot Restaurant
+      </h1>
+      <hr />
+      <h3 class="text-center">
+        Make your reservation
+      </h3>
+      <row class="d-flex justify-content-center">
+        <a href="/tables"><button class="btn btn-info btn-lg m-1">
+            <span class="fa fa-eye"></span> View Tables
+          </button></a>
+        <a href="/"><button class="btn btn-light btn-lg m-1">
+            <span class="fa fa-home"></span></button></a>
+      </row>
+    </div>
+    <div class="card m-3">
+      <div class="card-header">
+        Table Reservation
       </div>
-      <div class="card m-3">
-        <div class="card-header">
-          Table Reservation
+      <div class="container">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Name</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="John Smith" />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Phone Number</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="9243043938" />
         </div>
         <div class="container">
           <div class="form-group">
@@ -83,13 +84,14 @@
           </div>
         </div>
       </div>
-      <p>
-        <a href="">API Table Link</a>
-        |
-        <a href="">API Wait List</a>
-      </p>
     </div>
-    <script type="text/javascript">
+    <p>
+      <a href="">API Table Link</a>
+      |
+      <a href="">API Wait List</a>
+    </p>
+  </div>
+  <script type="text/javascript">
       // Question: What does this code do?
       $("#add-btn").on("click", function (event) {
         event.preventDefault();
@@ -106,5 +108,6 @@
         });
       });
     </script>
-  </body>
+</body>
+
 </html>
