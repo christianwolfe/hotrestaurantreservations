@@ -57,7 +57,7 @@
               type="email"
               class="form-control"
               id="exampleFormControlInput1"
-              placeholder="9243043938"
+              placeholder="924-304-3938"
             />
           </div>
           <div class="form-group">
@@ -79,7 +79,7 @@
             />
           </div>
           <div class="col-auto">
-            <button type="submit" class="btn btn-info mb-2">Submit</button>
+            <button type="submit" class="btn btn-info mb-2" id="add-btn">Submit</button>
           </div>
         </div>
       </div>
@@ -101,8 +101,7 @@
         };
 
         // Question: What does this code do??
-        $.post("/characters", newCharacter).then(function (data) {
-          console.log("tables.html", data);
+        $.post("/api/reservations", newCharacter).then(function (data) {
           return "Adding reservation...";
         });
       });
